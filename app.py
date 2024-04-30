@@ -38,10 +38,9 @@ class SerialPortal(tk.Toplevel):
         self.parent = parent
         self.parent.withdraw()
         
-        ttk.OptionMenu(self, parent.port, '', *[d.device for d in comports()]).pack()
+        ttk.OptionMenu(self, parent.port, 'COM5', *[d.device for d in comports()]).pack()
         ttk.Button(self, text='Connect', command=self.connect, default='active').pack()
         
-    @detached_callback
     def connect(self):
         self.parent.connect()
         self.destroy()
